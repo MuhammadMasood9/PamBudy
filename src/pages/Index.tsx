@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/landing/Navbar";
+import MarqueeBanner from "@/components/landing/MarqueeBanner";
 import HeroSection from "@/components/landing/HeroSection";
 import TopCategoriesSection from "@/components/landing/TopCategoriesSection";
 import TopDiscountedSection from "@/components/landing/TopDiscountedSection";
@@ -29,6 +30,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <MarqueeBanner />
       <Navbar />
       <HeroSection />
       <TopCategoriesSection />

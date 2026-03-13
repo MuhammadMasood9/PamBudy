@@ -31,7 +31,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen gradient-hero flex items-center pt-16 overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen gradient-hero flex items-center pt-[104px] overflow-hidden">
       <FloatingElements />
       <div className="container mx-auto px-6 py-16 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
