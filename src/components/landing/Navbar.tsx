@@ -57,7 +57,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav ref={navRef} className={`fixed top-10 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-card/90 backdrop-blur-xl shadow-soft border-b border-border" : "bg-transparent"}`}>
+      <nav ref={navRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-card/90 backdrop-blur-xl shadow-soft border-b border-border" : "bg-transparent"}`}>
         <div className="container mx-auto px-6 h-16 flex items-center justify-between">
           <a href="/" className="flex items-center gap-1 hover:opacity-80 transition-opacity">
             <img src={logo} alt="Pambuddy" className="h-14 w-14 object-contain" />
@@ -105,7 +105,7 @@ const Navbar = () => {
         className="fixed top-0 left-0 z-[70] h-full w-[280px] bg-card shadow-elevated flex flex-col"
         style={{ transform: "translateX(-100%)" }}
       >
-        <div className="gradient-primary px-5 pt-10 pb-4 flex-shrink-0">
+        <div className="gradient-primary px-5 pt-6 pb-4 flex-shrink-0">
           <div className="flex items-center justify-between">
             <a href="/" className="flex items-center gap-1 hover:opacity-80 transition-opacity" onClick={closeMenu}>
               <img src={logo} alt="Pambuddy" className="h-9 w-9 object-contain" />

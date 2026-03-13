@@ -3,7 +3,7 @@ import gsap from "gsap";
 import heroMother from "@/assets/hero-mother.png";
 import FloatingElements from "./FloatingElements";
 import { BabyStarSvg, BabyHeartSvg } from "./AnimatedSvgIcons";
-import { ArrowRight, Download, Star } from "lucide-react";
+import { ArrowRight, Download, Star, Tag } from "lucide-react";
 import { HERO_CONTENT, HERO_STATS, HERO_BADGE_TEXT, STAR_RATING_COUNT } from "@/constants";
 
 const HeroSection = () => {
@@ -31,18 +31,24 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen gradient-hero flex items-center pt-[104px] overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen gradient-hero flex items-center pt-16 overflow-hidden">
       <FloatingElements />
       <div className="container mx-auto px-6 py-16 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          <div className="text-center lg:text-left space-y-6 relative z-10">
-            <div ref={badgeRef} className="inline-flex items-center gap-2 bg-card px-4 py-2 rounded-full shadow-soft border border-border/50">
-              <div className="flex -space-x-1">
-                {Array.from({ length: STAR_RATING_COUNT }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-baby-yellow fill-baby-yellow" />
-                ))}
+          <div className="text-center lg:text-left space-y-5 relative z-10">
+            <div ref={badgeRef} className="flex flex-wrap items-center gap-3 justify-center lg:justify-start">
+              <div className="inline-flex items-center gap-2 bg-card px-4 py-2 rounded-full shadow-soft border border-border/50">
+                <div className="flex -space-x-1">
+                  {Array.from({ length: STAR_RATING_COUNT }).map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-baby-yellow fill-baby-yellow" />
+                  ))}
+                </div>
+                <span className="text-sm font-semibold text-foreground">{HERO_BADGE_TEXT}</span>
               </div>
-              <span className="text-sm font-semibold text-foreground">{HERO_BADGE_TEXT}</span>
+              <div className="inline-flex items-center gap-1.5 gradient-primary text-primary-foreground text-xs font-bold px-3 py-2 rounded-full shadow-soft animate-pulse-soft">
+                <Tag className="w-3 h-3" />
+                200 OFF First Order
+              </div>
             </div>
 
             <h1 ref={headingRef} className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] text-foreground">
