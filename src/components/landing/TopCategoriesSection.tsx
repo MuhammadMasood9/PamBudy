@@ -59,7 +59,7 @@ const TopCategoriesSection = () => {
   }, [categories]);
 
   return (
-    <section ref={sectionRef} className="py-20 bg-background relative overflow-hidden">
+    <section ref={sectionRef} id="products" className="py-20 bg-background relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 categories-title">
           <span className="inline-block gradient-primary text-primary-foreground text-sm font-semibold px-4 py-1.5 rounded-full mb-4">

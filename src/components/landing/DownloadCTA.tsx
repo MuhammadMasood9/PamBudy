@@ -2,7 +2,48 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BabyBottleSvg, BabyMoonSvg } from "./AnimatedSvgIcons";
-import { Apple, Smartphone } from "lucide-react";
+
+const AppleStoreSvg = () => (
+  <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-14 w-auto">
+    <rect width="120" height="40" rx="6" fill="#000"/>
+    <rect x="0.5" y="0.5" width="119" height="39" rx="5.5" stroke="white" strokeOpacity="0.3"/>
+    <path d="M24.5 20.2c0-3.3 2.7-4.9 2.8-5-1.5-2.2-3.9-2.5-4.7-2.5-2 0-3.9 1.2-4.9 1.2-1 0-2.6-1.1-4.3-1.1-2.2 0-4.3 1.3-5.4 3.3-2.3 4 -.6 9.9 1.6 13.2 1.1 1.6 2.4 3.3 4.1 3.3 1.6-.1 2.2-1.1 4.2-1.1 1.9 0 2.5 1.1 4.2 1 1.8 0 2.9-1.6 4-3.2 1.2-1.8 1.7-3.6 1.8-3.7-.1-.1-3.4-1.4-3.4-5.4z" fill="white"/>
+    <path d="M21.3 10.9c.9-1.1 1.5-2.6 1.3-4.1-1.3.1-2.8.9-3.7 2-.8 1-1.5 2.5-1.3 4 1.4.1 2.9-.7 3.7-1.9z" fill="white"/>
+    <text x="35" y="16" fill="white" fontFamily="'Helvetica Neue', Arial, sans-serif" fontSize="7" letterSpacing="0.3">Download on the</text>
+    <text x="35" y="28" fill="white" fontFamily="'Helvetica Neue', Arial, sans-serif" fontSize="13" fontWeight="600" letterSpacing="0.2">App Store</text>
+  </svg>
+);
+
+const GooglePlaySvg = () => (
+  <svg viewBox="0 0 135 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-14 w-auto">
+    <rect width="135" height="40" rx="6" fill="#000"/>
+    <rect x="0.5" y="0.5" width="134" height="39" rx="5.5" stroke="white" strokeOpacity="0.3"/>
+    <path d="M10.4 7.5c-.4.4-.6 1-.6 1.8v21.4c0 .8.2 1.4.6 1.8l.1.1 12-12v-.3l-12-12-.1.2z" fill="url(#gp1)"/>
+    <path d="M26.5 23.6l-4-4v-.3l4-4 .1.1 4.7 2.7c1.3.8 1.3 2 0 2.7l-4.8 2.8z" fill="url(#gp2)"/>
+    <path d="M26.6 23.5L22.5 19.4 10.4 31.5c.4.5 1.1.5 2 .1l14.2-8.1z" fill="url(#gp3)"/>
+    <path d="M26.6 16.5L12.4 8.4c-.9-.5-1.6-.4-2 .1l12.1 12.1 4.1-4.1z" fill="url(#gp4)"/>
+    <defs>
+      <linearGradient id="gp1" x1="21.8" y1="8.7" x2="5.0" y2="20" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#00A0FF"/>
+        <stop offset="1" stopColor="#00F0FF"/>
+      </linearGradient>
+      <linearGradient id="gp2" x1="33.8" y1="20" x2="9.6" y2="20" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#FFE000"/>
+        <stop offset="1" stopColor="#FFBD00"/>
+      </linearGradient>
+      <linearGradient id="gp3" x1="24.8" y1="22.3" x2="2.1" y2="49.9" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#FF3A44"/>
+        <stop offset="1" stopColor="#C31162"/>
+      </linearGradient>
+      <linearGradient id="gp4" x1="7.3" y1="-4.2" x2="17.5" y2="10.5" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#32A071"/>
+        <stop offset="1" stopColor="#2DA771"/>
+      </linearGradient>
+    </defs>
+    <text x="40" y="16" fill="white" fontFamily="'Helvetica Neue', Arial, sans-serif" fontSize="7" letterSpacing="0.3">GET IT ON</text>
+    <text x="40" y="28" fill="white" fontFamily="'Helvetica Neue', Arial, sans-serif" fontSize="13" fontWeight="600" letterSpacing="0.2">Google Play</text>
+  </svg>
+);
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,14 +94,12 @@ const DownloadCTA = () => {
             <p className="text-primary-foreground/80 text-lg mb-8">
               Download Pambuddy today and experience the smartest way to shop, learn, and connect as a mother.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-card text-foreground px-8 py-4 rounded-2xl font-display font-bold text-lg shadow-elevated hover:scale-105 transition-transform duration-300 inline-flex items-center justify-center gap-3">
-                <Apple className="w-6 h-6" />
-                App Store
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button className="hover:scale-105 transition-transform duration-300 shadow-elevated rounded-lg">
+                <AppleStoreSvg />
               </button>
-              <button className="bg-card/20 text-primary-foreground border-2 border-primary-foreground/30 px-8 py-4 rounded-2xl font-display font-bold text-lg hover:bg-card/30 hover:scale-105 transition-all duration-300 inline-flex items-center justify-center gap-3">
-                <Smartphone className="w-6 h-6" />
-                Google Play
+              <button className="hover:scale-105 transition-transform duration-300 shadow-elevated rounded-lg">
+                <GooglePlaySvg />
               </button>
             </div>
           </div>

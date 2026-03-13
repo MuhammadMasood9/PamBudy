@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
+  { label: "Products", href: "#products" },
   { label: "Features", href: "#features" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Screenshots", href: "#screenshots" },
@@ -12,6 +13,8 @@ const navLinks = [
 
 const Navbar = () => {
   const navRef = useRef<HTMLElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -24,45 +27,113 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!drawerRef.current || !overlayRef.current) return;
+
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+      gsap.set(drawerRef.current, { x: "-100%" });
+      gsap.set(overlayRef.current, { opacity: 0, display: "block" });
+      gsap.to(overlayRef.current, { opacity: 1, duration: 0.3, ease: "power2.out" });
+      gsap.to(drawerRef.current, { x: "0%", duration: 0.4, ease: "power3.out" });
+
+      gsap.fromTo(
+        ".drawer-link",
+        { x: -30, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.35, stagger: 0.06, ease: "power3.out", delay: 0.15 }
+      );
+    } else {
+      document.body.style.overflow = "";
+      gsap.to(overlayRef.current, { opacity: 0, duration: 0.25, ease: "power2.in", onComplete: () => { if (overlayRef.current) overlayRef.current.style.display = "none"; } });
+      gsap.to(drawerRef.current, { x: "-100%", duration: 0.35, ease: "power3.in" });
+    }
+  }, [mobileOpen]);
+
+  const closeMenu = () => setMobileOpen(false);
+
   return (
-    <nav ref={navRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-card/90 backdrop-blur-xl shadow-soft border-b border-border" : "bg-transparent"}`}>
-      <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2.5">
-          <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center shadow-soft">
-            <span className="text-primary-foreground font-display font-bold text-base">P</span>
+    <>
+      <nav ref={navRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-card/90 backdrop-blur-xl shadow-soft border-b border-border" : "bg-transparent"}`}>
+        <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+          <a href="#" className="flex items-center gap-2.5">
+            <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center shadow-soft">
+              <span className="text-primary-foreground font-display font-bold text-base">P</span>
+            </div>
+            <span className="font-display font-extrabold text-xl text-foreground">Pambuddy</span>
+          </a>
+
+          <div className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a key={link.label} href={link.href} className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors duration-200">
+                {link.label}
+              </a>
+            ))}
+            <a href="#download" className="gradient-primary text-primary-foreground px-6 py-2.5 rounded-xl text-sm font-bold hover:opacity-90 transition-opacity shadow-soft">
+              Get the App
+            </a>
           </div>
-          <span className="font-display font-extrabold text-xl text-foreground">Pambuddy</span>
-        </a>
 
-        <div className="hidden lg:flex items-center gap-8">
+          <button
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl text-foreground hover:bg-muted transition-colors duration-200"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+      </nav>
+
+      <div
+        ref={overlayRef}
+        className="fixed inset-0 z-40 bg-foreground/40 backdrop-blur-sm hidden"
+        onClick={closeMenu}
+      />
+
+      <div
+        ref={drawerRef}
+        className="fixed top-0 left-0 z-50 h-full w-72 bg-card shadow-elevated flex flex-col"
+        style={{ transform: "translateX(-100%)" }}
+      >
+        <div className="flex items-center justify-between px-6 h-16 border-b border-border flex-shrink-0">
+          <a href="#" className="flex items-center gap-2.5" onClick={closeMenu}>
+            <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center shadow-soft">
+              <span className="text-primary-foreground font-display font-bold text-sm">P</span>
+            </div>
+            <span className="font-display font-extrabold text-lg text-foreground">Pambuddy</span>
+          </a>
+          <button
+            className="w-9 h-9 flex items-center justify-center rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
+            onClick={closeMenu}
+            aria-label="Close menu"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        <div className="flex flex-col flex-1 overflow-y-auto px-4 py-6 gap-1">
           {navLinks.map((link) => (
-            <a key={link.label} href={link.href} className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors duration-200">
+            <a
+              key={link.label}
+              href={link.href}
+              className="drawer-link flex items-center px-4 py-3 rounded-2xl text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-baby-pink-light transition-all duration-200"
+              onClick={closeMenu}
+            >
               {link.label}
             </a>
           ))}
-          <a href="#download" className="gradient-primary text-primary-foreground px-6 py-2.5 rounded-xl text-sm font-bold hover:opacity-90 transition-opacity shadow-soft">
+        </div>
+
+        <div className="px-4 pb-8 flex-shrink-0">
+          <a
+            href="#download"
+            className="drawer-link block gradient-primary text-primary-foreground px-5 py-3.5 rounded-2xl text-sm font-bold text-center shadow-soft hover:opacity-90 transition-opacity"
+            onClick={closeMenu}
+          >
             Get the App
           </a>
         </div>
-
-        <button className="lg:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
       </div>
-
-      {mobileOpen && (
-        <div className="lg:hidden bg-card/95 backdrop-blur-xl border-b border-border px-6 py-4 space-y-3">
-          {navLinks.map((link) => (
-            <a key={link.label} href={link.href} className="block text-sm font-semibold text-muted-foreground hover:text-primary transition-colors" onClick={() => setMobileOpen(false)}>
-              {link.label}
-            </a>
-          ))}
-          <a href="#download" className="block gradient-primary text-primary-foreground px-5 py-2.5 rounded-xl text-sm font-bold text-center" onClick={() => setMobileOpen(false)}>
-            Get the App
-          </a>
-        </div>
-      )}
-    </nav>
+    </>
   );
 };
 
