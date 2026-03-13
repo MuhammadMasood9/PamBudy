@@ -1,36 +1,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Download, UserPlus, ShoppingBag, Sparkles } from "lucide-react";
+import { HOW_IT_WORKS_STEPS, HOW_IT_WORKS_SECTION } from "@/constants";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const steps = [
-  {
-    icon: Download,
-    step: "01",
-    title: "Download & Sign Up",
-    description: "Get the app for free and create your account with email or Google sign-in.",
-  },
-  {
-    icon: UserPlus,
-    step: "02",
-    title: "Set Up Your Profile",
-    description: "Tell us about your kids, preferences, skin type, and interests for personalized recommendations.",
-  },
-  {
-    icon: ShoppingBag,
-    step: "03",
-    title: "Shop & Subscribe",
-    description: "Browse products, set up auto-delivery subscriptions, and never run out of essentials.",
-  },
-  {
-    icon: Sparkles,
-    step: "04",
-    title: "Get AI Insights",
-    description: "Ask Fatima anything, get daily mood insights, parenting tips, and connect with the community.",
-  },
-];
 
 const HowItWorksSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -64,13 +37,13 @@ const HowItWorksSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 hiw-title">
           <span className="inline-block bg-baby-yellow-light text-accent-foreground text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-            How It Works
+            {HOW_IT_WORKS_SECTION.BADGE}
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-foreground mb-4">
-            Get Started in Minutes
+            {HOW_IT_WORKS_SECTION.TITLE}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Four simple steps to transform your motherhood journey.
+            {HOW_IT_WORKS_SECTION.DESCRIPTION}
           </p>
         </div>
 
@@ -79,7 +52,7 @@ const HowItWorksSection = () => {
           <div className="hiw-line absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-baby-pink-light to-accent origin-top hidden sm:block" />
 
           <div className="space-y-12">
-            {steps.map((step, index) => (
+            {HOW_IT_WORKS_STEPS.map((step, index) => (
               <div key={step.step} className={`hiw-step relative flex items-start gap-6 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} md:gap-12`}>
                 <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
                   <div className="gradient-card rounded-2xl p-6 shadow-card border border-border/50 hover:shadow-elevated transition-shadow duration-300">

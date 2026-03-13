@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BabyBottleSvg, BabyMoonSvg } from "./AnimatedSvgIcons";
+import { DOWNLOAD_CTA } from "@/constants";
 
 const AppleStoreSvg = () => (
   <svg viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-14 w-auto">
@@ -89,10 +90,10 @@ const DownloadCTA = () => {
 
           <div className="cta-content relative z-10 max-w-2xl mx-auto">
             <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-primary-foreground mb-4">
-              Join 50,000+ Happy Mothers
+              {DOWNLOAD_CTA.TITLE}
             </h2>
             <p className="text-primary-foreground/80 text-lg mb-8">
-              Download Pambuddy today and experience the smartest way to shop, learn, and connect as a mother.
+              {DOWNLOAD_CTA.DESCRIPTION}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button className="hover:scale-105 transition-transform duration-300 shadow-elevated rounded-lg">

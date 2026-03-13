@@ -1,48 +1,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ShoppingCart, Bot, CalendarClock, Users, Wallet, Lightbulb } from "lucide-react";
+import { FEATURES, FEATURES_SECTION } from "@/constants";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const features = [
-  {
-    icon: ShoppingCart,
-    title: "Shop Baby Essentials",
-    description: "Browse 100+ categories of baby products from top brands like Pampers, Bonpapa, and more. Add to cart, read reviews, and buy with ease.",
-    color: "bg-baby-pink-light text-primary",
-  },
-  {
-    icon: Bot,
-    title: "AI Parenting Coach",
-    description: "Ask Fatima — your personal AI assistant that answers health questions, provides daily insights, mood tracking, and expert parenting tips.",
-    color: "bg-baby-yellow-light text-accent-foreground",
-  },
-  {
-    icon: CalendarClock,
-    title: "Smart Subscriptions",
-    description: "Set up weekly, semi-monthly, or monthly auto-deliveries for essentials. Never run out of diapers or formula again.",
-    color: "bg-baby-peach text-primary",
-  },
-  {
-    icon: Users,
-    title: "Mothers Community",
-    description: "Connect with other moms, share experiences, ask questions, and post anonymously. A safe space to support each other.",
-    color: "bg-baby-cream text-secondary-foreground",
-  },
-  {
-    icon: Wallet,
-    title: "Pam Wallet & Coins",
-    description: "Earn Pam Coins on purchases, enjoy exclusive discounts, and manage your spending with the built-in wallet system.",
-    color: "bg-baby-pink-light text-primary",
-  },
-  {
-    icon: Lightbulb,
-    title: "Daily Insights",
-    description: "Get personalized mood insights, tips of the day, and child development activities like Peekaboo games for your kids.",
-    color: "bg-baby-yellow-light text-accent-foreground",
-  },
-];
 
 const FeaturesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -72,18 +33,18 @@ const FeaturesSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 features-title">
           <span className="inline-block gradient-primary text-primary-foreground text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-            Why Pambuddy?
+            {FEATURES_SECTION.BADGE}
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-foreground mb-4">
-            Everything a Mother Needs
+            {FEATURES_SECTION.TITLE}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            From shopping essentials to AI-powered guidance — Pambuddy is the all-in-one companion for modern mothers.
+            {FEATURES_SECTION.DESCRIPTION}
           </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
+          {FEATURES.map((feature, index) => (
             <div
               key={feature.title}
               ref={(el) => { if (el) cardsRef.current[index] = el; }}

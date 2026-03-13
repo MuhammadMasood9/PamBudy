@@ -1,17 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import gsap from "gsap";
 import { Menu, X } from "lucide-react";
-
-const navLinks = [
-  { label: "Products", href: "#products" },
-  { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Screenshots", href: "#screenshots" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Download", href: "#download" },
-];
+import { NAV_LINKS } from "@/constants";
 
 const Navbar = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
   const navRef = useRef<HTMLElement>(null);
   const drawerRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -55,7 +50,7 @@ const Navbar = () => {
     <>
       <nav ref={navRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-card/90 backdrop-blur-xl shadow-soft border-b border-border" : "bg-transparent"}`}>
         <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2.5">
+          <a href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
             <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center shadow-soft">
               <span className="text-primary-foreground font-display font-bold text-base">P</span>
             </div>
@@ -63,12 +58,19 @@ const Navbar = () => {
           </a>
 
           <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a key={link.label} href={link.href} className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors duration-200">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={isHomePage ? link.href : `/${link.href}`}
+                className="text-sm font-semibold text-muted-foreground hover:text-primary transition-colors duration-200"
+              >
                 {link.label}
               </a>
             ))}
-            <a href="#download" className="gradient-primary text-primary-foreground px-6 py-2.5 rounded-xl text-sm font-bold hover:opacity-90 transition-opacity shadow-soft">
+            <a
+              href={isHomePage ? "#download" : "/#download"}
+              className="gradient-primary text-primary-foreground px-6 py-2.5 rounded-xl text-sm font-bold hover:opacity-90 transition-opacity shadow-soft"
+            >
               Get the App
             </a>
           </div>
@@ -95,7 +97,7 @@ const Navbar = () => {
         style={{ transform: "translateX(-100%)" }}
       >
         <div className="flex items-center justify-between px-6 h-16 border-b border-border flex-shrink-0">
-          <a href="#" className="flex items-center gap-2.5" onClick={closeMenu}>
+          <a href="/" className="flex items-center gap-2.5" onClick={closeMenu}>
             <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center shadow-soft">
               <span className="text-primary-foreground font-display font-bold text-sm">P</span>
             </div>
@@ -111,10 +113,10 @@ const Navbar = () => {
         </div>
 
         <div className="flex flex-col flex-1 overflow-y-auto px-4 py-6 gap-1">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={isHomePage ? link.href : `/${link.href}`}
               className="drawer-link flex items-center px-4 py-3 rounded-2xl text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-baby-pink-light transition-all duration-200"
               onClick={closeMenu}
             >
@@ -125,7 +127,7 @@ const Navbar = () => {
 
         <div className="px-4 pb-8 flex-shrink-0">
           <a
-            href="#download"
+            href={isHomePage ? "#download" : "/#download"}
             className="drawer-link block gradient-primary text-primary-foreground px-5 py-3.5 rounded-2xl text-sm font-bold text-center shadow-soft hover:opacity-90 transition-opacity"
             onClick={closeMenu}
           >
