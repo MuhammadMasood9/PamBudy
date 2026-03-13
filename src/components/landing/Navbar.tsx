@@ -1,9 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import gsap from "gsap";
-import { Menu, X } from "lucide-react";
-import { NAV_LINKS } from "@/constants";
+import { Menu, X, ShoppingBag, Sparkles, PlayCircle, Smartphone, MessageCircle, Download, Info, Mail } from "lucide-react";
+import { NAV_LINKS, ROUTES } from "@/constants";
 import logo from "@/assets/logo.png";
+
+const NAV_ICONS: Record<string, React.ElementType> = {
+  "Products": ShoppingBag,
+  "Features": Sparkles,
+  "How It Works": PlayCircle,
+  "Screenshots": Smartphone,
+  "Testimonials": MessageCircle,
+  "Download": Download,
+};
 
 const Navbar = () => {
   const location = useLocation();
@@ -32,7 +41,6 @@ const Navbar = () => {
       gsap.set(overlayRef.current, { opacity: 0, display: "block" });
       gsap.to(overlayRef.current, { opacity: 1, duration: 0.3, ease: "power2.out" });
       gsap.to(drawerRef.current, { x: "0%", duration: 0.4, ease: "power3.out" });
-
       gsap.fromTo(
         ".drawer-link",
         { x: -30, opacity: 0 },
@@ -88,50 +96,85 @@ const Navbar = () => {
 
       <div
         ref={overlayRef}
-        className="fixed inset-0 z-40 bg-foreground/40 backdrop-blur-sm hidden"
+        className="fixed inset-0 z-[65] bg-foreground/40 backdrop-blur-sm hidden"
         onClick={closeMenu}
       />
 
       <div
         ref={drawerRef}
-        className="fixed top-0 left-0 z-50 h-full w-72 bg-card shadow-elevated flex flex-col"
+        className="fixed top-0 left-0 z-[70] h-full w-[280px] bg-card shadow-elevated flex flex-col"
         style={{ transform: "translateX(-100%)" }}
       >
-        <div className="flex items-center justify-between px-6 h-16 border-b border-border flex-shrink-0">
-          <a href="/" className="flex items-center gap-1 hover:opacity-80 transition-opacity" onClick={closeMenu}>
-            <img src={logo} alt="Pambuddy" className="h-12 w-12 object-contain" />
-            <span className="font-display font-extrabold text-xl -ml-1">
-              <span className="text-foreground">pam</span><span className="bg-gradient-to-r from-primary to-pink-400 bg-clip-text text-transparent">buddy</span>
-            </span>
-          </a>
-          <button
-            className="w-9 h-9 flex items-center justify-center rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
-            onClick={closeMenu}
-            aria-label="Close menu"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        <div className="flex flex-col flex-1 overflow-y-auto px-4 py-6 gap-1">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={isHomePage ? link.href : `/${link.href}`}
-              className="drawer-link flex items-center px-4 py-3 rounded-2xl text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-baby-pink-light transition-all duration-200"
-              onClick={closeMenu}
-            >
-              {link.label}
+        <div className="gradient-primary px-5 pt-10 pb-4 flex-shrink-0">
+          <div className="flex items-center justify-between">
+            <a href="/" className="flex items-center gap-1 hover:opacity-80 transition-opacity" onClick={closeMenu}>
+              <img src={logo} alt="Pambuddy" className="h-9 w-9 object-contain" />
+              <span className="font-display font-extrabold text-lg -ml-0.5">
+                <span className="text-primary-foreground">pam</span><span className="text-primary-foreground/80">buddy</span>
+              </span>
             </a>
-          ))}
+            <button
+              className="w-8 h-8 flex items-center justify-center rounded-xl bg-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/30 transition-colors duration-200"
+              onClick={closeMenu}
+              aria-label="Close menu"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
-        <div className="px-4 pb-8 flex-shrink-0">
+        <div className="flex flex-col flex-1 overflow-y-auto px-3 py-4 gap-1">
+          <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest px-4 mb-2">Navigation</p>
+          {NAV_LINKS.map((link) => {
+            const Icon = NAV_ICONS[link.label] ?? ShoppingBag;
+            return (
+              <a
+                key={link.label}
+                href={isHomePage ? link.href : `/${link.href}`}
+                className="drawer-link flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-baby-pink-light transition-all duration-200"
+                onClick={closeMenu}
+              >
+                <div className="w-8 h-8 rounded-xl bg-baby-pink-light/60 flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-4 h-4 text-primary" />
+                </div>
+                {link.label}
+              </a>
+            );
+          })}
+
+          <div className="my-3 border-t border-border/50" />
+          <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest px-4 mb-2">Pages</p>
+
+          <a
+            href={ROUTES.ABOUT_US}
+            className="drawer-link flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-baby-pink-light transition-all duration-200"
+            onClick={closeMenu}
+          >
+            <div className="w-8 h-8 rounded-xl bg-baby-yellow-light/60 flex items-center justify-center flex-shrink-0">
+              <Info className="w-4 h-4 text-accent-foreground" />
+            </div>
+            About Us
+          </a>
+
+          <a
+            href={ROUTES.CONTACT}
+            className="drawer-link flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-semibold text-muted-foreground hover:text-primary hover:bg-baby-pink-light transition-all duration-200"
+            onClick={closeMenu}
+          >
+            <div className="w-8 h-8 rounded-xl bg-baby-peach/60 flex items-center justify-center flex-shrink-0">
+              <Mail className="w-4 h-4 text-primary" />
+            </div>
+            Contact
+          </a>
+        </div>
+
+        <div className="px-4 pb-8 pt-2 flex-shrink-0 border-t border-border/50">
           <a
             href={isHomePage ? "#download" : "/#download"}
-            className="drawer-link block gradient-primary text-primary-foreground px-5 py-3.5 rounded-2xl text-sm font-bold text-center shadow-soft hover:opacity-90 transition-opacity"
+            className="drawer-link flex items-center justify-center gap-2 gradient-primary text-primary-foreground px-5 py-3.5 rounded-2xl text-sm font-bold text-center shadow-soft hover:opacity-90 transition-opacity mt-3"
             onClick={closeMenu}
           >
+            <Download className="w-4 h-4" />
             Get the App
           </a>
         </div>
