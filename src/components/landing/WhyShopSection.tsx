@@ -88,7 +88,7 @@ const WhyShopSection = () => {
             More Than Just Shopping
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Pambuddy is built for mothers — every feature is designed to save you time, money, and stress.
+            Pambuddy is built for every woman — every feature is designed to save you time, money, and stress, whether you're a mother, expecting, or simply taking care of yourself.
           </p>
         </div>
 
@@ -109,10 +109,10 @@ const WhyShopSection = () => {
 
         <div className="bg-gradient-to-r from-baby-pink-light/60 to-baby-yellow-light/60 border border-border/40 rounded-3xl p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <p className="font-display font-extrabold text-2xl sm:text-3xl text-foreground mb-1">
-              Join <span className="text-gradient-primary">50,000+</span> mothers already saving
-            </p>
-            <p className="text-muted-foreground text-base">Average user saves $180/month on baby essentials.</p>
+          <p className="font-display font-extrabold text-2xl sm:text-3xl text-foreground mb-1">
+            Join <span className="text-gradient-primary">50,000+</span> women already saving
+          </p>
+          <p className="text-muted-foreground text-base">Average user saves $180/month on baby and personal essentials.</p>
           </div>
           <a
             href="#download"

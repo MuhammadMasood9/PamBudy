@@ -11,26 +11,26 @@ export interface Feature {
 export const FEATURES: Feature[] = [
   {
     icon: ShoppingCart,
-    title: "Shop Baby Essentials",
-    description: "Browse 100+ categories of baby products from top brands like Pampers, Bonpapa, and more. Add to cart, read reviews, and buy with ease.",
+    title: "Shop Baby & Women's Essentials",
+    description: "Browse 100+ categories of baby and women's products from top brands. Add to cart, read reviews, and buy with ease.",
     color: "bg-baby-pink-light text-primary",
   },
   {
     icon: Bot,
-    title: "AI Parenting Coach",
-    description: "Ask Fatima — your personal AI assistant that answers health questions, provides daily insights, mood tracking, and expert parenting tips.",
+    title: "AI Health & Parenting Coach",
+    description: "Ask Fatima — your personal AI assistant for health questions, parenting advice, mood tracking, and personalized daily insights for every woman.",
     color: "bg-baby-yellow-light text-accent-foreground",
   },
   {
     icon: CalendarClock,
     title: "Smart Subscriptions",
-    description: "Set up weekly, semi-monthly, or monthly auto-deliveries for essentials. Never run out of diapers or formula again.",
+    description: "Set up weekly, semi-monthly, or monthly auto-deliveries for essentials. Never run out of diapers, formula, or personal care products again.",
     color: "bg-baby-peach text-primary",
   },
   {
     icon: Users,
-    title: "Mothers Community",
-    description: "Connect with other moms, share experiences, ask questions, and post anonymously. A safe space to support each other.",
+    title: "Women's Community",
+    description: "Connect with women and moms, share experiences, ask questions, and post anonymously. A safe space built for every woman.",
     color: "bg-baby-cream text-secondary-foreground",
   },
   {
@@ -42,13 +42,13 @@ export const FEATURES: Feature[] = [
   {
     icon: Lightbulb,
     title: "Daily Insights",
-    description: "Get personalized mood insights, tips of the day, and child development activities like Peekaboo games for your kids.",
+    description: "Get personalized wellness insights, daily tips, and child development activities — tailored to your lifestyle and stage of life.",
     color: "bg-baby-yellow-light text-accent-foreground",
   },
 ];
 
 export const FEATURES_SECTION = {
   BADGE: "Why Pambuddy?",
-  TITLE: "Everything a Mother Needs",
-  DESCRIPTION: "From shopping essentials to AI-powered guidance — Pambuddy is the all-in-one companion for modern mothers.",
+  TITLE: "Everything a Woman Needs",
+  DESCRIPTION: "From shopping essentials to AI-powered health guidance — Pambuddy is the all-in-one companion for every modern woman.",
 } as const;

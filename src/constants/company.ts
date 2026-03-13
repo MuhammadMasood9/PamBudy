@@ -1,9 +1,9 @@
 export const COMPANY_INFO = {
   NAME: "Pambuddy",
-  TAGLINE: "Your perfect buddy for tracking daily life — order, schedule, and get everything for your baby.",
-  DESCRIPTION: "Empowering mothers with smart tools, AI-powered insights, and a supportive community to make motherhood journey easier and more joyful.",
+  TAGLINE: "Your perfect buddy for every woman — shop, schedule, get insights, and connect with a community that understands you.",
+  DESCRIPTION: "Empowering women and mothers with smart tools, AI-powered insights, and a supportive community to make every stage of life easier, healthier, and more joyful.",
   COPYRIGHT: "© 2026 Pambuddy. All rights reserved.",
-  FOOTER_MESSAGE: "Made with ❤️ for amazing mothers",
+  FOOTER_MESSAGE: "Made with ❤️ for every amazing woman",
 } as const;
 
 export const CONTACT_INFO = {

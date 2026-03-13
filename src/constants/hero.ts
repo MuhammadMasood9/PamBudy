@@ -2,9 +2,9 @@ export const HERO_CONTENT = {
   HEADING: {
     MAIN: "Your Perfect",
     HIGHLIGHT: "Buddy",
-    SUB: "for Motherhood",
+    SUB: "for Every Woman",
   },
-  DESCRIPTION: "Shop baby essentials, get AI-powered parenting insights, set up auto-delivery subscriptions, and connect with a community of amazing mothers — all in one app.",
+  DESCRIPTION: "Shop baby & women's essentials, get AI-powered health and parenting insights, set up auto-delivery subscriptions, and connect with a community of amazing women — all in one app.",
   CTAs: {
     PRIMARY: {
       TEXT: "Download Free",

@@ -55,9 +55,9 @@ const AboutUs = () => {
               </div>
               <h1 className="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl text-foreground leading-[1.1] mb-6">
                 Built for{" "}
-                <span className="text-gradient-primary">Mothers</span>
+                <span className="text-gradient-primary">Every Woman</span>
                 <br />
-                by Mothers
+                by Women
               </h1>
               <p className="text-muted-foreground text-xl sm:text-2xl max-w-3xl mx-auto leading-relaxed mb-10">
                 {COMPANY_INFO.DESCRIPTION}
@@ -97,7 +97,7 @@ const AboutUs = () => {
                   {ABOUT_SECTIONS.STORY.TITLE}
                 </span>
                 <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-foreground leading-tight mb-8">
-                  From a Simple Idea to 50K+ Happy Mothers
+                  From a Simple Idea to 50K+ Happy Women
                 </h2>
                 <div className="space-y-5">
                   {ABOUT_SECTIONS.STORY.CONTENT.map((paragraph, index) => (
@@ -108,7 +108,7 @@ const AboutUs = () => {
               <div className="fade-up grid grid-cols-2 gap-4">
                 {[
                   { icon: ShoppingCart, label: "Products Available", value: "10K+", color: "bg-baby-pink-light text-primary" },
-                  { icon: Users, label: "Active Mothers", value: "50K+", color: "bg-baby-yellow-light text-accent-foreground" },
+                  { icon: Users, label: "Active Women", value: "50K+", color: "bg-baby-yellow-light text-accent-foreground" },
                   { icon: Bot, label: "AI Interactions Daily", value: "5K+", color: "bg-baby-peach text-primary" },
                   { icon: Star, label: "App Store Rating", value: "4.9★", color: "bg-baby-cream text-secondary-foreground" },
                 ].map((item, i) => (

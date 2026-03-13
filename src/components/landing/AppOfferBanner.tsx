@@ -53,7 +53,7 @@ const AppOfferBanner = () => {
                 <span className="text-white/80">on Your First Order</span>
               </h2>
               <p className="text-primary-foreground/80 text-base sm:text-lg leading-relaxed">
-                New users get exclusive discounts, free delivery on their first order, and 500 bonus Pam Coins — redeemable on every purchase.
+                New users — mothers, expecting moms, and all women — get exclusive discounts, free delivery on their first order, and 500 bonus Pam Coins redeemable on every purchase.
               </p>
             </div>
 
