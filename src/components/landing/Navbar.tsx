@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import gsap from "gsap";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/constants";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const location = useLocation();
@@ -50,11 +51,11 @@ const Navbar = () => {
     <>
       <nav ref={navRef} className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-card/90 backdrop-blur-xl shadow-soft border-b border-border" : "bg-transparent"}`}>
         <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
-            <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center shadow-soft">
-              <span className="text-primary-foreground font-display font-bold text-base">P</span>
-            </div>
-            <span className="font-display font-extrabold text-xl text-foreground">Pambuddy</span>
+          <a href="/" className="flex items-center gap-1 hover:opacity-80 transition-opacity">
+            <img src={logo} alt="Pambuddy" className="h-14 w-14 object-contain" />
+            <span className="font-display font-extrabold text-2xl -ml-1">
+              <span className="text-foreground">pam</span><span className="bg-gradient-to-r from-primary to-pink-400 bg-clip-text text-transparent">buddy</span>
+            </span>
           </a>
 
           <div className="hidden lg:flex items-center gap-8">
@@ -97,11 +98,11 @@ const Navbar = () => {
         style={{ transform: "translateX(-100%)" }}
       >
         <div className="flex items-center justify-between px-6 h-16 border-b border-border flex-shrink-0">
-          <a href="/" className="flex items-center gap-2.5" onClick={closeMenu}>
-            <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center shadow-soft">
-              <span className="text-primary-foreground font-display font-bold text-sm">P</span>
-            </div>
-            <span className="font-display font-extrabold text-lg text-foreground">Pambuddy</span>
+          <a href="/" className="flex items-center gap-1 hover:opacity-80 transition-opacity" onClick={closeMenu}>
+            <img src={logo} alt="Pambuddy" className="h-12 w-12 object-contain" />
+            <span className="font-display font-extrabold text-xl -ml-1">
+              <span className="text-foreground">pam</span><span className="bg-gradient-to-r from-primary to-pink-400 bg-clip-text text-transparent">buddy</span>
+            </span>
           </a>
           <button
             className="w-9 h-9 flex items-center justify-center rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"

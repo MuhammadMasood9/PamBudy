@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { Heart } from "lucide-react";
 import { NAV_LINKS, COMPANY_INFO, FOOTER_LINKS } from "@/constants";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const location = useLocation();
@@ -11,11 +12,11 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           <div>
-            <a href="/" className="flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity">
-              <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-display font-bold text-sm">P</span>
-              </div>
-              <span className="font-display font-bold text-xl text-foreground">{COMPANY_INFO.NAME}</span>
+            <a href="/" className="flex items-center gap-1 mb-4 hover:opacity-80 transition-opacity">
+              <img src={logo} alt={COMPANY_INFO.NAME} className="h-14 w-14 object-contain" />
+              <span className="font-display font-extrabold text-2xl -ml-1">
+                <span className="text-foreground">pam</span><span className="bg-gradient-to-r from-primary to-pink-400 bg-clip-text text-transparent">buddy</span>
+              </span>
             </a>
             <p className="text-muted-foreground text-sm leading-relaxed">
               {COMPANY_INFO.TAGLINE}
